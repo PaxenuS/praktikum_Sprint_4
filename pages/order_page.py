@@ -10,6 +10,14 @@ class OrderPage(BasePage):
         order = self.browser.find_element(metod, locator)
         order.click()
 
+    def go_to_order_upper(self):
+        self.go_to_order(*MainPageLocators.ORDER_1)
+
+    def go_to_order_lower(self):
+        botton = self.browser.find_element(*MainPageLocators.ORDER_2)
+        self.browser.execute_script("arguments[0].scrollIntoView();", botton) 
+        self.go_to_order(*MainPageLocators.ORDER_2)
+
     def fill_out_the_order(
             self, name, last_name, address, metro_station,phone_number,
             when_to_deliver, rental_period
